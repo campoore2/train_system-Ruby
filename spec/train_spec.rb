@@ -1,23 +1,30 @@
 require 'spec_helper'
 
 describe Train do
-
-  describe '#==' do
-    it 'compares two lines' do
-      test_train = Train.new({:line => 'blue', :city => 'Munich', :arriv => '12:01', :depar => '12:10'})
-      test_train2 = Train.new({:line => 'red', :city => 'Rome', :arriv => '1:14', :depar => '1:25'})
-      expect(test_train).to(eq(test_train2))
-    end
-  end
-
-  describe '#all' do
-    it 'starts off with no trains' do
+  describe '.all' do
+    it'starts off with no trains' do
       expect(Train.all()).to(eq([]))
     end
   end
 
+  describe '#==' do
+    it'compares two lines' do
+      test_train = Train.new({:line => 'blue', :city => 'Munich', :arriv => '12:01', :depar => '12:10'})
+      test_train2 = Train.new({:line => 'blue', :city => 'Munich', :arriv => '12:01', :depar => '12:10'})
+      expect(test_train).to(eq(test_train2))
+    end
+  end
+
+  describe '#save' do
+    it'saves a new train to the train table' do
+      train1 = Train.new({:line => 'blue', :city => 'Munich', :arriv => '12:26:30', :depar => '01:26:30'})
+      train1.save
+      expect(Train.all()).to(eq([train1]))
+    end
+  end
+
   describe '#line' do
-    it 'indicates which line the train runs on' do
+    it'indicates which line the train runs on' do
       test_train = Train.new({:line => 'blue', :city => 'Munich', :arriv => '12:01', :depar => '12:10'})
       expect(test_train.line()).to(eq('blue'))
     end
