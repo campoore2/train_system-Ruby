@@ -30,7 +30,7 @@ class Train
   end
 
   define_method(:select_by_city) do
-    @user_input = here
+    @loc = here
     result = DB.exec("SELECT * FROM trains WHERE city = '#{here}'")
   end
 
