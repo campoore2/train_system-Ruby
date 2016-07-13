@@ -14,5 +14,5 @@ describe Rider do
       expect(Rider.all()).to(eq([]))
     end
   end
-  
+
 end

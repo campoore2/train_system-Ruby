@@ -29,6 +29,11 @@ class Train
     @id = result.first().fetch("id").to_i
   end
 
+  define_method(:select_by_city) do
+    @user_input = here
+    result = DB.exec("SELECT * FROM trains WHERE city = '#{here}'")
+  end
+
   define_method(:==) do |otherline|
     (self.line() == otherline.line()&&(self.city() == otherline.city()&&(self.arriv == otherline.arriv()&&(self.depar() == otherline.depar()))))
   end
