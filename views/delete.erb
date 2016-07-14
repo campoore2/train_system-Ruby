@@ -1,0 +1,14 @@
+<h1>Remove a City</h1>
+<% if @trains.any?() %>
+  <ul id="cityRemove">
+    <% @trains.each() do |train| %>
+      <li><%= train.city %><form action="/<%= train.id %>/delete" method="post">
+        <input type="hidden" name="_method" value="delete">
+        <button type="submit" id="delete" class="btn-sm btn btn-danger">
+        <span class="glyphicon glyphicon-minus"></span>
+      </button></li></form>
+    <% end %>
+  </ul>
+<% else %>
+  <h2>There are no Cities to remove!</h2>
+<% end %>

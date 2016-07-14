@@ -29,3 +29,9 @@ a {
 #trainRemove {
   list-style: none;
 }
+
+#cityRemove {
+  font-size: 25px;
+  list-style: lower-greek;
+  float: left;
+}

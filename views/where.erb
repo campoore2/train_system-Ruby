@@ -1,0 +1,8 @@
+<h1>Trains from Your City</h1>
+<% if @trains.any?() %>
+  <ul>
+    <% trains.each() do |train| %>
+    <li><%= train.city %></li>
+    <% end %>
+  </ul>
+<% end %>

@@ -50,9 +50,28 @@ post('/add_line_form') do
   erb(:admin)
 end
 
-get('/admin/remove_city') do
-  erb(:remove_city)
+get('/delete') do
+  @trains = Train.all()
+  erb(:delete)
 end
+
+post('/:id/delete') do
+  new_train = Train.new({:id => params.fetch('id')})
+  new_train.save()
+  redirect to ('/delete')
+end
+
+delete('/:id/delete') do
+  id = params.fetch('id').to_i
+  train = Train.find(id)
+  @train.delete()
+  redirect to('/delete')
+end
+
 get('/admin/remove_line') do
   erb(:remove_line)
+end
+
+get('/where') do
+  erb(:where)
 end

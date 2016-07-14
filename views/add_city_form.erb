@@ -1,11 +1,11 @@
 <form action="/add_city_form" method="post">
   <label for="add_city">Add a new City:</label>
-  <input type="text" name="add_city" value="prague">
+  <input type="text" name="add_city" required>
   <label for="add_line">Add a new Line:</label>
-  <input type="text" name="add_line" value="blue">
+  <input type="text" name="add_line" required>
   <label for="arr">Add a new Arrival:</label>
-  <input type="text" name="arr" value="12:10:01">
+  <input type="text" name="arr" required>
   <label for="dep">Add a new Depature:</label>
-  <input type="text" name="dep" value="01:11:03">
+  <input type="text" name="dep" required>
   <button type="submit" id="newCity" class="btn-lg btn-danger">Submit</button>
 </form>
