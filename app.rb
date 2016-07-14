@@ -28,7 +28,21 @@ post('/add_city_form') do
   arriv = params.fetch('arr')
   depar = params.fetch('dep')
   train = Train.new({:line => line, :city => city,:depar => depar, :arriv => arriv})
-  binding.pry
+  train.save()
+  @trains = Train.all()
+  erb(:admin)
+end
+
+get('/admin/add_line_form') do
+  erb(:add_line_form)
+end
+
+post('/add_line_form') do
+  line = params.fetch('add_line')
+  city = params.fetch('add_city')
+  arriv = params.fetch('arr')
+  depar = params.fetch('dep')
+  train = Train.new({:line => line, :city => city, :depar => depar, :arriv => arriv})
   train.save()
   @trains = Train.all()
   erb(:admin)

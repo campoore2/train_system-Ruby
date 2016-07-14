@@ -13,7 +13,6 @@ class Train
     returned_train = DB.exec("SELECT id, line, city, arriv, depar FROM trains;")
     trains = []
     returned_train.each() do |train|
-      binding.pry
       id = train.fetch('id').to_i()
       line = train.fetch('line')
       city = train.fetch('city')
