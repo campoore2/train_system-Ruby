@@ -30,12 +30,13 @@ class Train
 
   define_singleton_method(:find) do |id|
     result = DB.exec("SELECT * FROM trains WHERE id = #{id};")
-    name = result.first().fetch("name")
+    id = result.first().fetch("id")
     Train.new({:line => line, :id => id})
   end
 
   define_singleton_method(:delete) do
     DB.exec("DELETE FROM trains WHERE id = #{self.id()};")
+    Train.delete()
   end
 
   define_method(:select_by_city) do

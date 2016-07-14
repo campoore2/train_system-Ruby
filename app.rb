@@ -63,8 +63,7 @@ end
 
 delete('/:id/delete') do
   id = params.fetch('id').to_i
-  train = Train.find(id)
-  @train.delete()
+  Train.delete()
   redirect to('/delete')
 end
 
