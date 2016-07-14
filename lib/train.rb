@@ -28,12 +28,12 @@ class Train
     @id = result.first().fetch("id").to_i
   end
 
-  define_singleton_method(:find) do |identification|
+  define_singleton_method(:find) do |id|
     Trains.all().each() do |train|
-      if trains.id == identification
-        return trains
+      if trains.id == id
       end
     end
+    return trains
   end
 
   define_method(:select_by_city) do

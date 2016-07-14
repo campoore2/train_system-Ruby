@@ -11,13 +11,15 @@ DB = PG.connect({:dbname => "train_system"})
 get '/' do
   erb :index
 end
-get '/rider' do
-  erb :rider
+
+get('/trains') do
+  @trains = Train.all()
+  erb(:trains)
 end
+
 get '/admin' do
   erb :admin
 end
-
 get('/admin/add_city_form') do
   erb(:add_city_form)
 end
@@ -27,7 +29,7 @@ post('/add_city_form') do
   line = params.fetch('add_line')
   arriv = params.fetch('arr')
   depar = params.fetch('dep')
-  train = Train.new({:line => line, :city => city,:depar => depar, :arriv => arriv})
+  train = Train.new({:line => line, :city => city, :depar => depar, :arriv => arriv})
   train.save()
   @trains = Train.all()
   erb(:admin)
@@ -46,4 +48,11 @@ post('/add_line_form') do
   train.save()
   @trains = Train.all()
   erb(:admin)
+end
+
+get('/admin/remove_city') do
+  erb(:remove_city)
+end
+get('/admin/remove_line') do
+  erb(:remove_line)
 end

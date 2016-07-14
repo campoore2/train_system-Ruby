@@ -1,3 +1,31 @@
 #indexTrains {
   list-style-type: none;
 }
+
+#trainInfo {
+  font-size: 25px;
+  list-style: lower-greek;
+  float: left;
+}
+
+body {
+  background-color: #D4BA90;
+}
+
+.navbar {
+  background: white;
+}
+
+a {
+  color: black;
+  font-size: 25px;
+  font-style: italic;
+}
+
+#trainAdd {
+  list-style: none;
+}
+
+#trainRemove {
+  list-style: none;
+}
