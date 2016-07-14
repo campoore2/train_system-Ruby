@@ -1,8 +1,12 @@
 require "sinatra"
 require "sinatra/reloader"
+require "pg"
 also_reload "lib/**/*.rb"
 require "./lib/train"
 require "./lib/rider"
+require "pry"
+
+DB = PG.connect({:dbname => "train_system"})
 
 get '/' do
   erb :index
@@ -14,24 +18,18 @@ get '/admin' do
   erb :admin
 end
 
-post('/where') do
-  @loc = params.fetch('loc')
-  erb(:index)
+get('/admin/add_city_form') do
+  erb(:add_city_form)
 end
 
-get('/admin/add_city_form') do
-  erb(:success)
-end
-post('/admin/add_city_form') do
+post('/add_city_form') do
   city = params.fetch('add_city')
   line = params.fetch('add_line')
-  arriv = params.fetch('add_arr')
-  depar = params.fetch('add_depar')
-  train = Train.new({:id => id, :line => line, :city => city,:depar => depar, :arriv => arriv})
+  arriv = params.fetch('arr')
+  depar = params.fetch('dep')
+  train = Train.new({:line => line, :city => city,:depar => depar, :arriv => arriv})
+  binding.pry
   train.save()
-  @train = Train.all()
-  erb(:success)
-end
-get '/admin/add_line_form' do
-  erb(:add_line_form)
+  @trains = Train.all()
+  erb(:admin)
 end

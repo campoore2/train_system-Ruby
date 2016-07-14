@@ -29,6 +29,14 @@ class Train
     @id = result.first().fetch("id").to_i
   end
 
+  define_singleton_method(:find) do |identification|
+    Trains.all().each() do |train|
+      if trains.id == identification
+        return trains
+      end
+    end
+  end
+
   define_method(:select_by_city) do
     @loc = here
     result = DB.exec("SELECT * FROM trains WHERE city = '#{here}'")
